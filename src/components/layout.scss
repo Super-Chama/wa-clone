@@ -1,0 +1,23 @@
+.wa-layout {
+  &-container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'sidebar';
+    @include responsive('sm') {
+      grid-template-columns: minmax(280px, 320px) auto;
+      grid-template-areas: 'sidebar content';
+    }
+  }
+  &-sidepanel {
+    height: inherit;
+    grid-area: sidebar;
+    background-color: $interface-white;
+  }
+  &-content {
+    height: inherit;
+    grid-area: content;
+    background-color: $interface-baige;
+    border-left: 1px solid $interface-grey-dark;
+  }
+}
