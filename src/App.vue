@@ -1,18 +1,28 @@
 <template>
-  <div class="wa-app">
-    <Layout></Layout>
-  </div>
+  <Layout>
+    <template #navigator>
+      <Navigator></Navigator>
+    </template>
+    <template #body>
+      <Viewer></Viewer>
+    </template>
+  </Layout>
 </template>
 
 <script lang="ts">
-import Layout from '@/components/Layout.vue'
+import Viewer from '@/components/Viewer.vue'
+import Navigator from '@/components/Navigator.vue'
+import Layout from '@/components/base/Layout.vue'
+
 import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'app',
 
   components: {
-    Layout
+    Layout,
+    Viewer,
+    Navigator
   }
 })
 </script>

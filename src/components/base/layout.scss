@@ -5,7 +5,7 @@
     grid-template-columns: 1fr;
     grid-template-areas: 'sidebar';
     @include responsive('sm') {
-      grid-template-columns: minmax(280px, 320px) auto;
+      grid-template-columns: minmax(320px, 30%) auto;
       grid-template-areas: 'sidebar content';
     }
   }
@@ -15,9 +15,13 @@
     background-color: $interface-white;
   }
   &-content {
+    display: none;
     height: inherit;
     grid-area: content;
     background-color: $interface-baige;
     border-left: 1px solid $interface-grey-dark;
+    @include responsive('sm') {
+      display: block;
+    }
   }
 }

@@ -1,0 +1,80 @@
+.wa-chat-bubble {
+  display: block;
+  position: relative;
+  max-width: fit-content;
+  border-radius: 0.75rem;
+  box-sizing: border-box;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.275rem;
+  margin-left: 0.5rem;
+
+  &-message {
+    font-size: 1rem;
+    color: $typo-black-1;
+  }
+
+  &-time {
+    right: 0;
+    bottom: 0;
+    display: none;
+    margin: 0.275rem;
+    position: absolute;
+    font-size: 0.65rem;
+    color: $typo-grey-1;
+  }
+
+  &.--white {
+    background-color: $interface-white;
+
+    &:first-of-type {
+      border-top-left-radius: 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        top: 0px;
+        left: -0.6rem;
+        border-width: 5px;
+        border-style: solid;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-top-color: $interface-white;
+        border-right-color: $interface-white;
+      }
+    }
+  }
+
+  &.--green {
+    margin-left: auto;
+    background-color: $interface-green;
+
+    &:first-of-type {
+      border-top-right-radius: 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        top: 0px;
+        right: -0.6rem;
+        border-width: 5px;
+        border-style: solid;
+        border-bottom-color: transparent;
+        border-left-color: $interface-green;
+        border-top-color: $interface-green;
+        border-right-color: transparent;
+      }
+    }
+  }
+
+  &:last-of-type &-message {
+    margin-bottom: 0.5rem;
+  }
+
+  &:last-of-type &-time {
+    display: block;
+  }
+}

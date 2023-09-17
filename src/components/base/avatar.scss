@@ -1,0 +1,25 @@
+.wa-avatar {
+  &-image {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    &.--medium {
+      width: 55px;
+      height: 55px;
+    }
+    &.--large {
+      width: 75px;
+      height: 75px;
+    }
+  }
+  &-container {
+    display: flex;
+    align-items: center;
+    &.--border {
+      padding: 0.125rem;
+      border-radius: 50%;
+      border: 3px dashed $brand-light-green;
+    }
+  }
+}

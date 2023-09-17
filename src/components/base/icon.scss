@@ -1,0 +1,12 @@
+.wa-icon {
+  padding: 1rem;
+  color: $typo-grey-1;
+  box-sizing: border-box;
+
+  &.--background {
+    background-color: $interface-grey;
+  }
+  &.--border {
+    border: 1px solid $interface-grey-dark;
+  }
+}
