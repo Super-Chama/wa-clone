@@ -1,6 +1,7 @@
 # WA Clone UI
 
 Made with Vue3 + Vite + Sass
+
 Live demo: https://super-chama.github.io/wa-clone
 
 ## Project Setup
