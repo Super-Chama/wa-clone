@@ -4,7 +4,8 @@ import svgLoader from 'vite-svg-loader'
 import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/wa-clone/' : '',
   plugins: [
     vue(),
     svgLoader({
@@ -23,4 +24,4 @@ export default defineConfig({
       }
     }
   }
-})
+}))
