@@ -1,0 +1,6 @@
+.wa-chat-container {
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 1rem 0.75rem;
+  height: calc(100vh - calc($header-height + $footer-height));
+}

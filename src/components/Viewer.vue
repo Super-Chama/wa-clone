@@ -8,27 +8,30 @@
       <Icon name="menu"></Icon>
     </template>
   </Header>
-  <Chat :history="history"></Chat>
+  <History :history="history"></History>
+  <Composer></Composer>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Chat from '@/components/Chat.vue'
 import Icon from '@/components/base/Icon.vue'
 import Avatar from '@/components/base/Avatar.vue'
 import Header from '@/components/base/Header.vue'
+import History from '@/components/chat/History.vue'
+import Composer from '@/components/chat/Composer.vue'
 
 export default defineComponent({
   name: 'viewer',
   components: {
     Icon,
-    Chat,
     Header,
-    Avatar
+    Avatar,
+    History,
+    Composer,
   },
   data() {
     return {
-      history: Array(5)
+      history: Array(50)
         .fill(null)
         .map(() => ({
           user: {

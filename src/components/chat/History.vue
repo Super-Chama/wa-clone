@@ -20,7 +20,7 @@ import { computed, defineComponent } from 'vue'
 import Bubble from '@/components/base/Bubble.vue'
 
 export default defineComponent({
-  name: 'chat',
+  name: 'history',
 
   props: {
     history: {
@@ -77,4 +77,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" src="./chat.scss"></style>
+<style lang="scss" src="./history.scss"></style>

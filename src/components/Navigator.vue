@@ -9,24 +9,26 @@
       <Icon name="menu"></Icon>
     </template>
   </Header>
-  <!-- <Search></Search> -->
+  <Search></Search>
   <Drawer :list="list"></Drawer>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Drawer from '@/components/Drawer.vue'
 import Icon from '@/components/base/Icon.vue'
 import Header from '@/components/base/Header.vue'
 import Avatar from '@/components/base/Avatar.vue'
+import Search from '@/components/sidepanel/Search.vue'
+import Drawer from '@/components/sidepanel/Drawer.vue'
 
 export default defineComponent({
   name: 'navigator',
   components: {
     Icon,
-    Drawer,
+    Header,
     Avatar,
-    Header
+    Search,
+    Drawer
   },
   data() {
     return {
