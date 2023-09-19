@@ -10,11 +10,11 @@
 </template>
 
 <script lang="ts">
+import { useState } from '@/state'
+import { defineComponent } from 'vue'
 import Viewer from '@/components/Viewer.vue'
 import Navigator from '@/components/Navigator.vue'
 import Layout from '@/components/base/Layout.vue'
-
-import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'app',
@@ -23,6 +23,11 @@ export default defineComponent({
     Layout,
     Viewer,
     Navigator
+  },
+
+  setup() {
+    const { seedState } = useState()
+    seedState()
   }
 })
 </script>

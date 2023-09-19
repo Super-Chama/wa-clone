@@ -8,4 +8,8 @@
     padding: 0.5rem 0.75rem;
     box-sizing: border-box;
   }
+  &-left {
+    gap: 1rem;
+    display: flex;
+  }
 }

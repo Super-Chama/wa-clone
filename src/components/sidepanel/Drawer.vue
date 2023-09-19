@@ -48,7 +48,7 @@ export default defineComponent({
           imgSrc: contact.user.profileImg,
           fullName: `${contact.user.firstName} ${contact.user.lastName}` || contact.user.username,
           hasLastIm: !!contact.lastIm,
-          lastIm: contact.lastIm?.content,
+          lastIm: (contact.lastIm?.content || '').substring(0, 25).trim() + "...",
           lastImStatus: contact.lastIm?.read,
           lastImTime: formatDistance(contact.lastIm?.sent || 0, new Date(), {
             addSuffix: true,

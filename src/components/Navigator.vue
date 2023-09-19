@@ -10,10 +10,11 @@
     </template>
   </Header>
   <Search></Search>
-  <Drawer :list="list"></Drawer>
+  <Drawer :list="contacts"></Drawer>
 </template>
 
 <script lang="ts">
+import { useState } from '@/state'
 import { defineComponent } from 'vue'
 import Icon from '@/components/base/Icon.vue'
 import Header from '@/components/base/Header.vue'
@@ -30,24 +31,11 @@ export default defineComponent({
     Search,
     Drawer
   },
-  data() {
+  setup() {
+    const { contacts } = useState()
+
     return {
-      list: Array(5)
-        .fill(null)
-        .map(() => ({
-          user: {
-            uuid: '32323',
-            firstName: 'Jason',
-            lastName: 'Bourne',
-            username: 'jason',
-            profileImg: ''
-          },
-          lastIm: {
-            uuid: '32323',
-            content: 'Hello World!',
-            sent: new Date().valueOf()
-          }
-        }))
+      contacts
     }
   }
 })

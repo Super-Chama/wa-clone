@@ -1,19 +1,21 @@
 <template>
   <Header>
     <template #left>
-      <Avatar></Avatar>
+      <Avatar :src="contactImg"></Avatar>
+      <h4>{{ contactName }}</h4>
     </template>
     <template #right>
       <Icon name="search"></Icon>
       <Icon name="menu"></Icon>
     </template>
   </Header>
-  <History :history="history"></History>
+  <History :history="chats"></History>
   <Composer></Composer>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { useState } from '@/state'
+import { computed, defineComponent } from 'vue'
 import Icon from '@/components/base/Icon.vue'
 import Avatar from '@/components/base/Avatar.vue'
 import Header from '@/components/base/Header.vue'
@@ -27,26 +29,30 @@ export default defineComponent({
     Header,
     Avatar,
     History,
-    Composer,
+    Composer
   },
-  data() {
+  setup() {
+    const { chats, contacts, activeContact } = useState()
+
+    const contactName = computed(() => {
+      if (activeContact.value > -1) {
+        const contact = contacts.value[activeContact.value]
+        return `${contact.user.firstName} ${contact.user.lastName}`
+      }
+      return ''
+    })
+
+    const contactImg = computed(() => {
+      if (activeContact.value > -1) {
+        return contacts.value[activeContact.value].user.profileImg
+      }
+      return ''
+    })
+
     return {
-      history: Array(50)
-        .fill(null)
-        .map(() => ({
-          user: {
-            uuid: Math.random() > 0.5 ? '32323' : '00001',
-            firstName: 'Jason',
-            lastName: 'Bourne',
-            username: 'jason',
-            profileImg: ''
-          },
-          message: {
-            uuid: '32323',
-            content: 'Hello World!',
-            sent: new Date().valueOf()
-          }
-        }))
+      chats,
+      contactImg,
+      contactName
     }
   }
 })
