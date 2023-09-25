@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { useState } from '@/state'
+import { useStore } from '@/store'
 import { defineComponent } from 'vue'
 import Icon from '@/components/base/Icon.vue'
 import Header from '@/components/base/Header.vue'
@@ -32,7 +32,7 @@ export default defineComponent({
     Drawer
   },
   setup() {
-    const { contacts } = useState()
+    const { contacts } = useStore()
 
     return {
       contacts

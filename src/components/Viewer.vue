@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { useState } from '@/state'
+import { useStore } from '@/store'
 import { computed, defineComponent } from 'vue'
 import Icon from '@/components/base/Icon.vue'
 import Avatar from '@/components/base/Avatar.vue'
@@ -32,7 +32,7 @@ export default defineComponent({
     Composer
   },
   setup() {
-    const { chats, contacts, activeContact } = useState()
+    const { chats, contacts, activeContact } = useStore()
 
     const contactName = computed(() => {
       if (activeContact.value > -1) {

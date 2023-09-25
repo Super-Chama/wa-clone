@@ -10,7 +10,6 @@
 </template>
 
 <script lang="ts">
-import { useState } from '@/state'
 import { defineComponent } from 'vue'
 import Viewer from '@/components/Viewer.vue'
 import Navigator from '@/components/Navigator.vue'
@@ -24,11 +23,6 @@ export default defineComponent({
     Viewer,
     Navigator
   },
-
-  setup() {
-    const { seedState } = useState()
-    seedState()
-  }
 })
 </script>
 
