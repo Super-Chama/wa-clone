@@ -1,0 +1,47 @@
+.wa-splash {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: $interface-grey-light;
+
+  &-icon {
+    scale: 1.2;
+    color: $typo-grey-1;
+    margin-bottom: 1.2rem;
+  }
+
+  &-brandname {
+    margin: 0;
+    color: $typo-black-1;
+  }
+  &-tagline {
+    color: $typo-grey-1;
+  }
+  &-loader {
+    width: 80%;
+    height: 5px;
+    margin: 1.2rem 0;
+    max-width: 320px;
+    position: relative;
+    background: $interface-grey-dark;
+
+    &::before {
+      content: '';
+      height: 5px;
+      position: absolute;
+      background: $brand-light-green;
+      animation: 2s loader ease-out forwards;
+    }
+  }
+}
+
+@keyframes loader {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

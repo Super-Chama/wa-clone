@@ -1,21 +1,21 @@
 // very basic global store
 // only for demo
 
-import { reactive, toRefs } from 'vue'
-import type { User, Chat, Contact } from '@/types'
+import { reactive, readonly, toRefs } from 'vue'
+import type { Contact, Message } from '@/types'
 
 interface State {
-  chats: Chat[]
   contacts: Contact[]
-  activeContact: number
-  currentUser: User | null;
+  messages: Message[]
+  currentUser: Contact | null
+  activeContact: string | null
 }
 
 const state = reactive<State>({
-  chats: [],
   contacts: [],
-  activeContact: -1,
+  messages: [],
   currentUser: null,
+  activeContact: null
 })
 
 export function useStore() {
@@ -25,6 +25,6 @@ export function useStore() {
 
   return {
     setState,
-    ...toRefs(state)
+    ...toRefs(readonly<State>(state))
   }
 }

@@ -22,6 +22,7 @@
   &-pre-actions,
   &-post-actions {
     & .wa-icon {
+      cursor: pointer;
       padding: 1rem 0.5rem;
     }
   }

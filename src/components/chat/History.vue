@@ -1,5 +1,5 @@
 <template>
-  <div class="wa-chat-container">
+  <div ref="scrollerDiv" class="wa-chat-container">
     <div v-for="group in chats" :key="group.toString()" class="wa-chat-group">
       <Bubble
         v-for="chat in group"
@@ -15,16 +15,21 @@
 <script lang="ts">
 import { format } from 'date-fns'
 import type { PropType } from 'vue'
-import type { Chat } from '@/types'
-import { computed, defineComponent } from 'vue'
+import type { Message } from '@/types'
 import Bubble from '@/components/base/Bubble.vue'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 
 export default defineComponent({
   name: 'history',
 
   props: {
+    uuid: {
+      type: [String, null] as PropType<string | null>,
+      required: false,
+      default: null
+    },
     history: {
-      type: Array as PropType<Chat[]>,
+      type: Array as PropType<Message[]>,
       required: false,
       default: () => []
     }
@@ -35,18 +40,20 @@ export default defineComponent({
   },
 
   setup(props) {
+    const scrollerDiv = ref<HTMLDivElement>()
+
     const classes = computed(() => ({
       'wa-avatar-container': true
     }))
 
     const chats = computed(() =>
       props.history
-        .map((chat) => {
+        .map((message) => {
           return {
-            uuid: chat.message.uuid,
-            sent: chat.user.uuid === '00001',
-            message: chat.message.content,
-            time: format(chat.message.sent, 'HH:mm')
+            uuid: message.uuid,
+            message: message.content,
+            sent: message.sender_uuid === props.uuid,
+            time: format(message.sent, 'HH:mm')
           }
         })
         .reduce(
@@ -69,9 +76,20 @@ export default defineComponent({
         )
     )
 
+    watch(
+      chats,
+      async () => {
+        await nextTick()
+        const div = scrollerDiv.value!
+        div.scrollTo({ top: div.scrollHeight })
+      },
+      { immediate: true }
+    )
+
     return {
       chats,
-      classes
+      classes,
+      scrollerDiv
     }
   }
 })

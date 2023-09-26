@@ -3,15 +3,20 @@
     <div class="wa-composer-pre-actions">
       <Icon name="attach"></Icon>
     </div>
-    <input class="wa-composer-input" placeholder="Type a message here .." />
+    <input
+      v-model.trim="message"
+      class="wa-composer-input"
+      placeholder="Type a message here .."
+      @keyup.enter.prevent="onSend"
+    />
     <div class="wa-composer-post-actions">
-      <Icon name="send"></Icon>
+      <Icon name="send" @click="onSend"></Icon>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { ref, defineComponent } from 'vue'
 import Icon from '@/components/base/Icon.vue'
 
 export default defineComponent({
@@ -20,6 +25,23 @@ export default defineComponent({
   components: {
     Icon
   },
+
+  emits: ['sendMessage'],
+
+  setup(_, context) {
+    const message = ref(null)
+
+    const onSend = () => {
+      if (!message.value) return
+      context.emit('sendMessage', message.value)
+      message.value = null
+    }
+
+    return {
+      onSend,
+      message,
+    }
+  }
 })
 </script>
 

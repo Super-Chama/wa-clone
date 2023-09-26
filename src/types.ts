@@ -1,4 +1,4 @@
-export interface User {
+export interface Contact {
   uuid: string
   firstName: string
   lastName: string
@@ -12,14 +12,6 @@ export interface Message {
   sent: number
   read?: number
   delivered?: number
-}
-
-export interface Contact {
-  user: User
-  lastIm: Message | null
-}
-
-export interface Chat {
-  user: User
-  message: Message
+  sender_uuid: string
+  receiver_uuid: string
 }

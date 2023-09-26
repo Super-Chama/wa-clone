@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts">
+import type { PropType } from "vue";
 import { computed, defineComponent } from 'vue'
 import defaultAvatar from '@/assets/blank-profile-picture.png'
 
@@ -23,7 +24,7 @@ export default defineComponent({
 
   props: {
     src: {
-      type: String,
+      type: [String, null] as PropType<string | null>,
       required: false,
       default: null
     },

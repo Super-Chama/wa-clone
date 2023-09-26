@@ -7,6 +7,7 @@
   }
   &-card {
     display: flex;
+    cursor: pointer;
     align-items: center;
     padding: 0.5rem 1rem;
     justify-content: space-between;
@@ -30,6 +31,7 @@
         margin: unset;
         color: $typo-black-1;
         margin-bottom: 0.275rem;
+        text-transform: capitalize;
       }
       span {
         color: $typo-grey-1;
@@ -49,6 +51,10 @@
     }
     &:last-of-type {
       border: unset;
+    }
+
+    &.--selected, &:hover {
+      background-color: $interface-grey;
     }
   }
 }
