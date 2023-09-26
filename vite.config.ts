@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
 
   return {
-    base: JSON.stringify(env.BASE_PATH),
+    base: env.VITE_BASE_PATH,
     plugins: [
       vue(),
       svgLoader({
